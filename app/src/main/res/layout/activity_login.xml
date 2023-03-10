@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background4"
+    tools:context=".LoginActivity">
+
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:text="Log in"
+        android:textColor="#F6F1F1" />
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="500dp"
+        android:background="@drawable/white_background"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <ImageView
+            android:layout_width="150dp"
+
+            android:layout_height="141dp"
+
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/user_profile_1" />
+
+        <EditText
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:id="@+id/loginEmailEditText_Id"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:hint="Email"
+            android:textColorHint="#656060"
+            android:textColor="#656060"
+            android:background="@drawable/edit_text1_bg"
+            android:drawableLeft="@drawable/ic_action_mail"
+            android:paddingStart="10dp"
+
+            />
+        <EditText
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:id="@+id/loginPasswordeditText_Id"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:drawableLeft="@drawable/ic_action_lock"
+            android:hint="Password"
+            android:textColorHint="#656060"
+            android:background="@drawable/edit_text1_bg"
+            android:textColor="#656060"
+            android:paddingStart="10dp"
+            />
+        <Button
+            android:id="@+id/loginButton_Id"
+
+            android:text="Login"
+            android:textColor="#0B080A"
+            android:textSize="20sp"
+
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:background="@drawable/edit_text1_bg"
+
+            android:shadowColor="#EDF0EAF1"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            />
+
+
+        <TextView
+            android:id="@+id/needAccountId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#656060"
+            android:text="Not registered?Sign up now" />
+    </LinearLayout>
+
+
+
+
+    <!-- <EditText
+         android:textStyle="bold"
+         android:textSize="16sp"
+         android:id="@+id/email_Id"
+         android:layout_width="match_parent"
+         android:layout_height="55dp"
+
+         android:layout_marginLeft="40dp"
+         android:layout_marginRight="40dp"
+         android:layout_marginBottom="20dp"
+         android:hint="Email"
+         android:textColorHint="#656060"
+         android:textColor="#656060"
+         android:background="@drawable/edit_text1_bg"
+         android:drawableLeft="@drawable/ic_action_mail"
+         android:paddingStart="10dp"
+
+         />-->
+
+
+
+
+
+
+    <ProgressBar
+        android:id="@+id/progressbarId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1069633009740",
+    "firebase_url": "https://snake-afe5d-default-rtdb.firebaseio.com",
+    "project_id": "snake-afe5d",
+    "storage_bucket": "snake-afe5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069633009740:android:7474dfa195218261019ce9",
+        "android_client_info": {
+          "package_name": "com.example.snake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069633009740-45fvb15cdt6sptqnko0s0m3696mn678r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm7bJUe_foxyyrxhI_CxJqYim9_zXXMug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069633009740-45fvb15cdt6sptqnko0s0m3696mn678r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

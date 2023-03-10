@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_background"
+    tools:context=".SnakeClassificationActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#332424"
+        android:text="Check either venomous or non-venomous" />
+
+    <ImageView
+        android:id="@+id/imageViewId"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gallery_icon"
+        tools:ignore="UnknownId" />
+<Button
+    android:id="@+id/selectButtonId"
+    android:layout_below="@+id/imageViewId"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:text="select image"></Button>
+
+    <Button
+        android:id="@+id/captureButtonId"
+        android:layout_below="@+id/selectButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="capture image"></Button>
+    <Button
+        android:id="@+id/predictButtonId"
+        android:layout_below="@+id/captureButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="predict "></Button>
+
+    <TextView
+        android:id="@+id/resultId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/predictButtonId"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:text="Result: "
+        android:textAlignment="center"
+        android:textColor="#332424"
+        android:textSize="30dp" />
+
+</RelativeLayout>

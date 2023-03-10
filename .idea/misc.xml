@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Snake/app/src/main/res/drawable-anydpi/ic_action_lock.xml" value="0.111" />
+        <entry key="..\:/Snake/app/src/main/res/drawable-anydpi/ic_action_profile.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.135" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/aboutus_icon.xml" value="0.1195" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/edit_text1_bg.xml" value="0.10666666666666667" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/home_icon.xml" value="0.111" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/ic_baseline_contact_support_24.xml" value="0.1195" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/ic_launcher_background.xml" value="0.135" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/logout_icon.xml" value="0.1195" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/profile_icon.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/profile_user.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/profile_user1.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/register_icon.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/send_icon.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/star_rate_icon.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_about_us.xml" value="0.129981884057971" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_extra_trial.xml" value="0.22" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_google_map.xml" value="0.1" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_home.xml" value="0.14666666666666667" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_login.xml" value="0.184375" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_main.xml" value="0.14322916666666666" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_profile_user.xml" value="0.22" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_rating.xml" value="0.16666666666666666" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_signup.xml" value="0.16666666666666666" />
+        <entry key="..\:/Snake/app/src/main/res/layout/activity_snake_classification.xml" value="0.184375" />
+        <entry key="..\:/Snake/app/src/main/res/layout/border.xml" value="0.17346014492753623" />
+        <entry key="..\:/Snake/app/src/main/res/layout/comment_sample_layout.xml" value="0.22" />
+        <entry key="..\:/Snake/app/src/main/res/layout/header.xml" value="0.18333333333333332" />
+        <entry key="..\:/Snake/app/src/main/res/layout/spinner_layout.xml" value="0.17346014492753623" />
+        <entry key="..\:/Snake/app/src/main/res/menu/main_menu.xml" value="0.184375" />
+        <entry key="..\:/Snake/app/src/main/res/menu/menu_layout.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Embedded JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
