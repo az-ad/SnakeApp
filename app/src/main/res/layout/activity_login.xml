@@ -79,7 +79,7 @@
             android:id="@+id/loginButton_Id"
 
             android:text="Login"
-            android:textColor="#0B080A"
+            android:textColor="@color/white"
             android:textSize="20sp"
 
             android:layout_width="180dp"

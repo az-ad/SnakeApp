@@ -8,7 +8,7 @@
     tools:context=".ProfileUserActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profileImageView_Id"
         android:layout_width="137dp"
         android:layout_height="129dp"
         android:layout_marginTop="52dp"
@@ -25,8 +25,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView_Id"
+        tools:ignore="MissingConstraints,UnknownId">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/white_background">
             <EditText
-                android:id="@+id/userNameEditText_Id"
+                android:id="@+id/nameEditText_Id"
                 android:layout_width="266dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="40dp"
@@ -42,12 +42,13 @@
                 android:background="@drawable/edit_text1_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="User Name:"
+                android:padding="10dp"
+                android:hint="Name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/nameEditText_Id"
+                android:id="@+id/emailEditText_Id"
                 android:layout_width="266dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="40dp"
@@ -55,12 +56,13 @@
                 android:background="@drawable/edit_text1_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name:"
+                android:padding="10dp"
+                android:hint="Email"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/emailEditText_Id"
+                android:id="@+id/professionEditText_Id"
                 android:layout_width="263dp"
                 android:layout_height="49dp"
                 android:layout_marginStart="40dp"
@@ -68,7 +70,8 @@
                 android:background="@drawable/edit_text1_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Email:"
+                android:padding="10dp"
+                android:hint="Profession"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +84,8 @@
                 android:background="@drawable/edit_text1_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Division:"
+                android:padding="10dp"
+                android:hint="Division"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,18 +98,19 @@
                 android:background="@drawable/edit_text1_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Phone Number:"
+                android:padding="10dp"
+                android:hint="Phone number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/editProfileButton_Id"
+                android:id="@+id/saveProfileButton_Id"
                 android:layout_width="259dp"
                 android:layout_height="64dp"
                 android:layout_marginStart="40dp"
 
                 android:layout_marginTop="28dp"
-                android:text="Edit Profile"
+                android:text="Save Profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneNumberEditText_Id" />
 

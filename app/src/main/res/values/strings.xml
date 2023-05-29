@@ -6,8 +6,12 @@
     <string name="faculty">Faculty</string>
     <string name="department">Department</string>
     <string-array name="array_faculty">
-        <item>Select Your Faculty</item><item>Engineering</item><item>Arts</item><item>Science</item>
-        <item>Business Administration</item><item>Social Science</item>
+        <item>Select Your Faculty</item>
+        <item>Engineering</item>
+        <item>Arts</item>
+        <item>Science</item>
+        <item>Business Administration</item>
+        <item>Social Science</item>
 
     </string-array>
     <string-array name="array_default_departments">
@@ -15,23 +19,29 @@
     </string-array>
     <string-array name="array_engineering_departments">
         <item>Select Your Department</item>
-         <item>CSE</item><item>EEE</item>
+        <item>CSE</item>
+        <item>EEE</item>
     </string-array>
     <string-array name="array_arts_departments">
         <item>Select Your Department</item>
-        <item>English</item><item>Bangla</item>
+        <item>English</item>
+        <item>Bangla</item>
     </string-array>
     <string-array name="array_science_departments">
         <item>Select Your Department</item>
-        <item>Math</item><item>Physics</item>
+        <item>Math</item>
+        <item>Physics</item>
     </string-array>
     <string-array name="array_business_administration_departments">
         <item>Select Your Department</item>
-        <item>Accounting</item><item>Management</item><item>Finance</item>
+        <item>Accounting</item>
+        <item>Management</item>
+        <item>Finance</item>
     </string-array>
     <string-array name="array_social_science_departments">
         <item>Select Your Department</item>
-        <item>Economics</item><item>Public Administration</item>
+        <item>Economics</item>
+        <item>Public Administration</item>
     </string-array>
 
 </resources>

@@ -2,59 +2,23 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:background="@drawable/white_background1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:id="@+id/drawer_layout"
+    tools:context=".NewsFeedActivity">
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-
-        app:menu="@menu/main_menu"
-
-        android:layout_gravity="start"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" />
-<!--            app:layout_constraintStart_toTopOf="parent"-->
-            app:navigationIcon="@drawable/menu_icon"
-
-            tools:ignore="MissingConstraints" />
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/app_logo"-->
-<!--            tools:layout_editor_absoluteX="102dp"-->
-<!--            tools:layout_editor_absoluteY="243dp"-->
-<!--            tools:ignore="MissingConstraints" />-->
-
-        //----------------------------------add post design----------------//
-<!--        <include-->
-<!--            android:id="@+id/include"-->
-<!--            layout="@layout/main_appbar"-->
-<!--            tools:layout_editor_absoluteX="0dp"-->
-<!--        tools:layout_editor_absoluteY="47dp" />-->
+        <include
+            android:id="@+id/include"
+            layout="@layout/main_appbar"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="47dp" />
 
         <EditText
             android:id="@+id/inputAddPost"
@@ -82,7 +46,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/inputAddPost"
             app:layout_constraintStart_toStartOf="@+id/inputAddPost"
-
+            app:layout_constraintTop_toBottomOf="@+id/include"
             app:layout_constraintVertical_bias="0.724"
             app:srcCompat="@drawable/ic_add_post_image" />
 
@@ -93,8 +57,7 @@
             android:layout_marginEnd="28dp"
             app:layout_constraintBottom_toBottomOf="@+id/inputAddPost"
             app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintTop_toTopOf="@+id/inputAddPost"
+            app:layout_constraintTop_toBottomOf="@+id/include"
             app:layout_constraintVertical_bias="0.724"
             app:srcCompat="@drawable/send_button" />
 
@@ -111,7 +74,30 @@
             tools:ignore="MissingConstraints,UnknownId" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/navView"-->
+<!--        android:layout_gravity="start"-->
+<!--        />-->
 
+    //---------previous nav ----------//
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/nav_view"-->
+<!--        app:headerLayout="@layout/header"-->
+<!--        app:menu="@menu/main_menu"-->
 
+<!--        android:layout_gravity="start"/>-->
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+
+        app:menu="@menu/main_menu"
+
+        android:layout_gravity="start"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

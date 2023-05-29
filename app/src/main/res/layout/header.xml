@@ -7,12 +7,19 @@
     android:gravity="bottom"
     android:padding="20dp">
 
-    <ImageView
+<!--    <ImageView-->
+<!--        android:id="@+id/profileImageHeader_Id"-->
+<!--        android:layout_width="85dp"-->
+<!--        android:layout_height="85dp"-->
+<!--        android:src="@drawable/profile_user"/>-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImageHeader_Id"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:src="@drawable/profile_user"/>
 
     <TextView
+        android:id="@+id/nameHeader_Id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/acme"
@@ -20,6 +27,7 @@
         android:textSize="24sp" />
 
     <TextView
+        android:id="@+id/emailHeader_Id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/acme"

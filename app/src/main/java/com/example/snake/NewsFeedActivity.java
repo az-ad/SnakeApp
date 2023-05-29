@@ -7,9 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,18 +22,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+public class NewsFeedActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    //Toolbar toolbar;
     Toolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -43,39 +36,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String profileimageUrlv,nameV,emailV;
     CircleImageView profileImageHeader;
     TextView nameHeader,emailHeader;
-    private YouTubePlayerView youTubePlayerView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_news_feed);
 
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar1);
 
-        /*---------------------Toolbar-------------------------*/
-
+//        /*---------------------Toolbar-------------------------*/
+//
+//        //setSupportActionBar(toolbar);
         //setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
-    //-------------new action bar--------------//
-//        getSupportActionBar().setTitle("Snake App");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu_icon);
-
-        /*----------------Navigation drawer menu------------------*/
+//
+//        /*----------------Navigation drawer menu------------------*/
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
-
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
 
         navigationView.setCheckedItem(R.id.nav_home);
-
 
         //-----------------user name & profile image setting-------------------------//
         View view= navigationView.inflateHeaderView(R.layout.header);
@@ -86,9 +71,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mAuth=FirebaseAuth.getInstance();
         mUser=mAuth.getCurrentUser();
         mUserRef= FirebaseDatabase.getInstance().getReference().child("Users");
-
-    }//end oncreate
-
+    } // end oncreate
 
     @Override
     protected void onStart() {
@@ -112,7 +95,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(HomeActivity.this, "Sorry!Something going wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewsFeedActivity.this, "Sorry!Something going wrong", Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -120,12 +103,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void sendUserToLoginActivity() {
-        Intent intent=new Intent(HomeActivity.this,LoginActivity.class);
+        Intent intent=new Intent(NewsFeedActivity.this,LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
-    @Override
+    //------------------------end of user proile header---------------//
+
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -137,7 +121,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    @Override
+@Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.nav_home:
@@ -184,7 +168,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 // logout
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                 intent=new Intent(getApplicationContext(),MainActivity.class);
+                intent=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -192,13 +176,4 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        if(item.getItemId()== android.R.id.home){
-//            drawerLayout.openDrawer(GravityCompat.START);
-//            return true;
-//        }
-//        return true;
-//    }
 }

@@ -41,6 +41,14 @@
                     android:id="@+id/nav_signUp"
                     android:icon="@drawable/register_icon"
                     android:title="Sign up" />
+                <item
+                    android:id="@+id/nav_newsFeed"
+                    android:icon="@drawable/ic_feed_24"
+                    android:title="News Feed" />
+                <item
+                    android:id="@+id/nav_verifyEmail"
+                    android:icon="@drawable/register_icon"
+                    android:title="Verify Your Email" />
             </group>
 
         </menu>
