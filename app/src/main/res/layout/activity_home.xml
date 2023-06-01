@@ -57,7 +57,7 @@
 <!--        tools:layout_editor_absoluteY="47dp" />-->
 
         <EditText
-            android:id="@+id/inputAddPost"
+            android:id="@+id/inputAddPost_Id"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -75,26 +75,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/addImagePost"
+            android:id="@+id/addImagePost_Id"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost"
-            app:layout_constraintStart_toStartOf="@+id/inputAddPost"
+            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost_Id"
+            app:layout_constraintStart_toStartOf="@+id/inputAddPost_Id"
 
             app:layout_constraintVertical_bias="0.724"
             app:srcCompat="@drawable/ic_add_post_image" />
 
         <ImageView
-            android:id="@+id/send_post_imageView"
+            android:id="@+id/sendPostImageView_Id"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginEnd="28dp"
-            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost"
+            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost_Id"
             app:layout_constraintEnd_toEndOf="parent"
 
-            app:layout_constraintTop_toTopOf="@+id/inputAddPost"
+            app:layout_constraintTop_toTopOf="@+id/inputAddPost_Id"
             app:layout_constraintVertical_bias="0.724"
             app:srcCompat="@drawable/send_button" />
 
@@ -106,7 +106,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputAddPost"
+            app:layout_constraintTop_toBottomOf="@+id/inputAddPost_Id"
             android:background="#C6C5C5"
             tools:ignore="MissingConstraints,UnknownId" />
     </androidx.constraintlayout.widget.ConstraintLayout>
