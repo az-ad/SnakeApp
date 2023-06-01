@@ -7,19 +7,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.snake.Utills.Posts;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -57,6 +64,9 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
     EditText inputPostDesc;
     Uri imageUri;
     ProgressDialog mLoadingBar;
+    FirebaseRecyclerAdapter<Posts,MyViewHolder>adapter;
+    FirebaseRecyclerOptions<Posts>options;
+    RecyclerView recyclerView;
     private static final int REQUEST_CODE = 101;
 
     @Override
@@ -71,6 +81,9 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
         sendImagePost=findViewById(R.id.sendPostImageView_Id);
         inputPostDesc=findViewById(R.id.inputAddPost_Id);
         mLoadingBar=new ProgressDialog(this);
+        recyclerView=findViewById(R.id.recyclerview);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        /*---------------------Toolbar-------------------------*/
 //
 //        //setSupportActionBar(toolbar);
@@ -113,7 +126,33 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
                 startActivityForResult(intent,REQUEST_CODE);
             }
         });
+
+        loadPost();
     } // end oncreate
+
+    private void loadPost() {
+        options=new  FirebaseRecyclerOptions.Builder<Posts>().setQuery(postRef,Posts.class).build();
+        adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
+                holder.postDesc.setText(model.getPostDesc());
+                holder.timeAgo.setText(model.getDatePost());
+                holder.nameUser.setText(model.getName());
+                Picasso.get().load(model.getPostImageUrl()).into(holder.postImage);
+                Picasso.get().load(model.getUserProfileImageUrl()).into(holder.profileImage);
+            }
+
+            @NonNull
+            @Override
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_post,parent,false);
+                return new MyViewHolder(view);
+            }
+        };
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+    }
+
     //---------------for select image------------//
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -146,7 +185,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if(task.isSuccessful())
                     {
-                        //---------get the url of stored image & store it to database----//
+                        //---------store the data into database----//
                         postImageRef.child(mUser.getUid()+strDate).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
