@@ -12,6 +12,7 @@
         <entry key="..\:/Snake/app/src/main/res/drawable/ic_add_post_image.xml" value="0.1" />
         <entry key="..\:/Snake/app/src/main/res/drawable/ic_baseline_contact_support_24.xml" value="0.1195" />
         <entry key="..\:/Snake/app/src/main/res/drawable/ic_launcher_background.xml" value="0.135" />
+        <entry key="..\:/Snake/app/src/main/res/drawable/ic_post_like.xml" value="0.1365" />
         <entry key="..\:/Snake/app/src/main/res/drawable/logout_icon.xml" value="0.1195" />
         <entry key="..\:/Snake/app/src/main/res/drawable/menu_icon.xml" value="0.1" />
         <entry key="..\:/Snake/app/src/main/res/drawable/profile_icon.xml" value="0.1" />
@@ -36,6 +37,7 @@
         <entry key="..\:/Snake/app/src/main/res/layout/comment_sample_layout.xml" value="0.22" />
         <entry key="..\:/Snake/app/src/main/res/layout/header.xml" value="0.18333333333333332" />
         <entry key="..\:/Snake/app/src/main/res/layout/main_appbar.xml" value="0.13360507246376813" />
+        <entry key="..\:/Snake/app/src/main/res/layout/single_view_post.xml" value="0.22" />
         <entry key="..\:/Snake/app/src/main/res/layout/spinner_layout.xml" value="0.17346014492753623" />
         <entry key="..\:/Snake/app/src/main/res/menu/main_menu.xml" value="0.184375" />
         <entry key="..\:/Snake/app/src/main/res/menu/menu_layout.xml" value="0.1" />

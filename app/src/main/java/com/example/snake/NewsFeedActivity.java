@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,9 +45,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,7 +59,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
     Toolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
-    DatabaseReference mUserRef,postRef;
+    DatabaseReference mUserRef,postRef,likeRef;
     StorageReference  postImageRef;
     String profileimageUrlv,nameV,emailV;
     CircleImageView profileImageHeader;
@@ -109,6 +113,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
         mUser=mAuth.getCurrentUser();
         mUserRef= FirebaseDatabase.getInstance().getReference().child("Users");
         postRef= FirebaseDatabase.getInstance().getReference().child("Posts");
+        likeRef=FirebaseDatabase.getInstance().getReference().child("Likes");
         postImageRef= FirebaseStorage.getInstance().getReference().child("PostImages");
         //-------------------send button--------------------------------------//
         sendImagePost.setOnClickListener(new View.OnClickListener() {
@@ -135,11 +140,39 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
         adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
+               String postKey=getRef(position).getKey();
                 holder.postDesc.setText(model.getPostDesc());
-                holder.timeAgo.setText(model.getDatePost());
+               // holder.timeAgo.setText(model.getDatePost());
+                String timeAgo = calculateTimeAgo(model.getDatePost());
+                holder.timeAgo.setText(timeAgo);
                 holder.nameUser.setText(model.getName());
                 Picasso.get().load(model.getPostImageUrl()).into(holder.postImage);
                 Picasso.get().load(model.getUserProfileImageUrl()).into(holder.profileImage);
+                holder.likeImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        likeRef.child(postKey).child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    likeRef.child(postKey).child(mUser.getUid()).removeValue();
+                                    holder.likeImage.setColorFilter(Color.GRAY);
+                                    notifyDataSetChanged();
+                                }
+                                else {
+                                    likeRef.child(postKey).child(mUser.getUid()).setValue("like");
+                                    holder.likeImage.setColorFilter(Color.RED);
+                                    notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(NewsFeedActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
             }
 
             @NonNull
@@ -152,6 +185,22 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
+
+    private String calculateTimeAgo(String datePost) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+
+        try {
+            long time = sdf.parse(datePost).getTime();
+            long now = System.currentTimeMillis();
+            CharSequence ago =
+                    DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
+            return  ago+"";
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
     //---------------for select image------------//
     @Override

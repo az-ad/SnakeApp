@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +44,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String profileimageUrlv,nameV,emailV;
     CircleImageView profileImageHeader;
     TextView nameHeader,emailHeader;
-    private YouTubePlayerView youTubePlayerView;
 
+    WebView webView;
+    private YouTubePlayerView youTubePlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar1);
 
+//        webView = findViewById(R.id.aboutus);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl("file:///android_asset/index.html");
         /*---------------------Toolbar-------------------------*/
 
         //setSupportActionBar(toolbar);
@@ -75,6 +80,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
+
+        //--------------for youTube video play------------------------------------------//
+        youTubePlayerView = findViewById(R.id.activity_main_youtubePlayerView);
+        getLifecycle().addObserver(youTubePlayerView);
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = "9iVua8tAtVk";
+                youTubePlayer.loadVideo(videoId, 0);
+                //youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
 
 
         //-----------------user name & profile image setting-------------------------//

@@ -56,62 +56,91 @@
 <!--            tools:layout_editor_absoluteX="0dp"-->
 <!--        tools:layout_editor_absoluteY="47dp" />-->
 
-        <EditText
-            android:id="@+id/inputAddPost_Id"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/edit_text1_bg"
-            android:hint="Write something here"
-            android:paddingLeft="50dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <EditText-->
+<!--            android:id="@+id/inputAddPost_Id"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="64dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@drawable/edit_text1_bg"-->
+<!--            android:hint="Write something here"-->
+<!--            android:paddingLeft="50dp"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="1.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <ImageView
-            android:id="@+id/addImagePost_Id"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost_Id"
-            app:layout_constraintStart_toStartOf="@+id/inputAddPost_Id"
+<!--        <ImageView-->
+<!--            android:id="@+id/addImagePost_Id"-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost_Id"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/inputAddPost_Id"-->
 
-            app:layout_constraintVertical_bias="0.724"
-            app:srcCompat="@drawable/ic_add_post_image" />
+<!--            app:layout_constraintVertical_bias="0.724"-->
+<!--            app:srcCompat="@drawable/ic_add_post_image" />-->
 
-        <ImageView
-            android:id="@+id/sendPostImageView_Id"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="28dp"
-            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost_Id"
-            app:layout_constraintEnd_toEndOf="parent"
+<!--        <ImageView-->
+<!--            android:id="@+id/sendPostImageView_Id"-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_marginEnd="28dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/inputAddPost_Id"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
 
-            app:layout_constraintTop_toTopOf="@+id/inputAddPost_Id"
-            app:layout_constraintVertical_bias="0.724"
-            app:srcCompat="@drawable/send_button" />
+<!--            app:layout_constraintTop_toTopOf="@+id/inputAddPost_Id"-->
+<!--            app:layout_constraintVertical_bias="0.724"-->
+<!--            app:srcCompat="@drawable/send_button" />-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputAddPost_Id"
-            android:background="#C6C5C5"
-            tools:ignore="MissingConstraints,UnknownId" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerview"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/inputAddPost_Id"-->
+<!--            android:background="#C6C5C5"-->
+<!--            tools:ignore="MissingConstraints,UnknownId" />-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            >-->
+<!--            <WebView-->
+<!--                android:id="@+id/aboutus"-->
+<!--                android:layout_margin="20dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                />-->
+<!--        </LinearLayout>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/activity_main_youtubePlayerView"
+        android:layout_width="365dp"
+        android:layout_height="199dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        app:autoPlay="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
+        app:videoId="9iVua8tAtVk" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
