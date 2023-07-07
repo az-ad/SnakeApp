@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.snake.Utills.Comment;
 import com.example.snake.Utills.Posts;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -59,7 +60,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
     Toolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
-    DatabaseReference mUserRef,postRef,likeRef;
+    DatabaseReference mUserRef,postRef,likeRef,commentRef;
     StorageReference  postImageRef;
     String profileimageUrlv,nameV,emailV;
     CircleImageView profileImageHeader;
@@ -72,6 +73,8 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
     FirebaseRecyclerOptions<Posts>options;
     RecyclerView recyclerView;
     private static final int REQUEST_CODE = 101;
+    FirebaseRecyclerOptions<Comment>CommentOption;
+    FirebaseRecyclerAdapter<Comment,CommentViewHolder>CommentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +117,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
         mUserRef= FirebaseDatabase.getInstance().getReference().child("Users");
         postRef= FirebaseDatabase.getInstance().getReference().child("Posts");
         likeRef=FirebaseDatabase.getInstance().getReference().child("Likes");
+        commentRef=FirebaseDatabase.getInstance().getReference().child("Comments");
         postImageRef= FirebaseStorage.getInstance().getReference().child("PostImages");
         //-------------------send button--------------------------------------//
         sendImagePost.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +152,8 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
                 holder.nameUser.setText(model.getName());
                 Picasso.get().load(model.getPostImageUrl()).into(holder.postImage);
                 Picasso.get().load(model.getUserProfileImageUrl()).into(holder.profileImage);
+                holder.countLikes(postKey,mUser.getUid(),likeRef);
+                holder.countComments(postKey,mUser.getUid(),commentRef);
                 holder.likeImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -173,6 +179,20 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
                         });
                     }
                 });
+                holder.commentSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String comment = holder.inputComments.getText().toString();
+                        if (comment.isEmpty()){
+                            Toast.makeText(NewsFeedActivity.this, "Please write something", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            AddComment(holder,postKey,commentRef,mUser.getUid(),comment);
+                        }
+                    }
+                });
+
+                LoadComment(postKey);
             }
 
             @NonNull
@@ -184,6 +204,50 @@ public class NewsFeedActivity extends AppCompatActivity implements NavigationVie
         };
         adapter.startListening();
         recyclerView.setAdapter(adapter);
+    }
+
+    private void LoadComment(String postKey) {
+        MyViewHolder.recyclerView.setLayoutManager(new LinearLayoutManager(NewsFeedActivity.this));
+        CommentOption=new  FirebaseRecyclerOptions.Builder<Comment>().setQuery(commentRef.child(postKey),Comment.class).build();
+        CommentAdapter= new FirebaseRecyclerAdapter<Comment, CommentViewHolder>(CommentOption) {
+            @Override
+            protected void onBindViewHolder(@NonNull CommentViewHolder holder, int position, @NonNull Comment model) {
+                Picasso.get().load(model.getProfileImageUrl()).into(holder.profileImage);
+                holder.userName.setText(model.getUsername());
+                holder.comment.setText(model.getComment());
+
+            }
+
+            @NonNull
+            @Override
+            public CommentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_comment,parent,false);
+                return new CommentViewHolder(view);
+            }
+        };
+        CommentAdapter.startListening();
+        MyViewHolder.recyclerView.setAdapter(CommentAdapter);
+    }
+
+    private void AddComment(MyViewHolder holder, String postKey, DatabaseReference commentRef, String uid, String comment) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("username",nameV);
+        hashMap.put("profileImageUrl",profileimageUrlv);
+        hashMap.put("comment",comment);
+        commentRef.child(postKey).child(uid).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(NewsFeedActivity.this, "Comment added", Toast.LENGTH_SHORT).show();
+                    adapter.notifyDataSetChanged();
+                    holder.inputComments.setText("");
+                }
+                else {
+                    Toast.makeText(NewsFeedActivity.this, ""+task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 
     private String calculateTimeAgo(String datePost) {

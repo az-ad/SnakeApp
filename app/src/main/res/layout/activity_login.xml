@@ -75,6 +75,14 @@
             android:textColor="#656060"
             android:paddingStart="10dp"
             />
+        <CheckBox
+            android:id="@+id/remember"
+            android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Remember me"
+            android:buttonTint="#E41708"
+            android:textColor="#D7BD3463" />
         <Button
             android:id="@+id/loginButton_Id"
 

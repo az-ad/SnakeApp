@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -28,6 +29,7 @@ public class RatingActivity extends AppCompatActivity {
 
 
     private RatingBar rateRatingBar;
+    private TextView averageRating;
     private EditText commentEditText;
     private ImageView buttonImageView;
     private ListView listView;
@@ -46,7 +48,8 @@ public class RatingActivity extends AppCompatActivity {
         commentEditText= findViewById(R.id.commentEditText_Id);
         buttonImageView= findViewById(R.id.buttonImageView_Id);
         listView = findViewById(R.id.listView_Id);
-
+        averageRating=findViewById(R.id.avg_rating);
+//        averageRating.setText("ndndnnd");
         userCommentList = new ArrayList<>();
         commentCustomAdapter = new CommentCustomAdapter(RatingActivity.this,userCommentList);
         //loadData();
@@ -73,7 +76,7 @@ public class RatingActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(comment)) {
             // if the text fields are empty
             // then show the below message.
-            Toast.makeText(RatingActivity.this, "Please add some data.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RatingActivity.this, "Please add Your comment.", Toast.LENGTH_SHORT).show();
         }
         else {
             String key = databaseReference.push().getKey();
@@ -93,13 +96,25 @@ public class RatingActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userCommentList.clear();
+                float totalRating= 0.0F,count= 0.0F;
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren() )
                 {
                     UserComment userComment = dataSnapshot1.getValue(UserComment.class);
                     userCommentList.add(userComment);
-
+                    float rate= Float.parseFloat( dataSnapshot1.child("rating").getValue().toString());
+                    System.out.println(rate);
+                    totalRating += rate;
+                    count++;
+                    float average_Rating = totalRating / count;
+                    String str2 = String.format("%.1f", average_Rating);
+//                    String str2 = String.valueOf(average_Rating);
+                    averageRating.setText(str2);
+//                    averageRating.setText("Average Rating: " + averageRating);
+//                    avgRating();
                 }
+//
                 listView.setAdapter(commentCustomAdapter);
+//
 
             }
 
@@ -110,4 +125,5 @@ public class RatingActivity extends AppCompatActivity {
         });
         super.onStart();
     }
+
 }

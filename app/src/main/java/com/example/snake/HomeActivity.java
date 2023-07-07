@@ -1,5 +1,7 @@
 package com.example.snake;
 
+//import static com.example.snake.LoginActivity.SHARED_PREFS;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String profileimageUrlv,nameV,emailV;
     CircleImageView profileImageHeader;
     TextView nameHeader,emailHeader;
-
+//    public static final String SHARED_PREFS ="sharedPrefs";
     WebView webView;
     private YouTubePlayerView youTubePlayerView;
 
@@ -87,7 +89,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = "9iVua8tAtVk";
+                String videoId = "bZYPI4mYwhw";
                 youTubePlayer.loadVideo(videoId, 0);
                 //youTubePlayer.cueVideo(videoId, 0);
             }
@@ -200,8 +202,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_logout:
 
                 // logout
-                FirebaseAuth.getInstance().signOut();
+                SharedPreferences sharedPreferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("remember","false");
+                editor.apply();
                 finish();
+//                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putString("name","");
+//                editor.apply();
+//                FirebaseAuth.getInstance().signOut();
+//                finish();
                  intent=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 break;
